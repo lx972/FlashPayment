@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/FlashPayment.iml" filepath="$PROJECT_DIR$/.idea/FlashPayment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-api/flash-payment-merchant-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-api/flash-payment-merchant-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-service/flash-payment-merchant-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-service/flash-payment-merchant-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-parent.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sailing/sailing.iml" filepath="$PROJECT_DIR$/sailing/sailing.iml" />
+    </modules>
+  </component>
+</project>
