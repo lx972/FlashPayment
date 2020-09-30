@@ -18,4 +18,24 @@ public interface IMerchantService {
      * @return
      */
     MerchantDTO queryMerchantById(String id);
+
+    /**
+     * 注册商户
+     * @param merchantDTO
+     */
+    void registerMerchant(MerchantDTO merchantDTO);
+
+    /**
+     * 根据租户id查询企业所有人信息
+     * @param tenantId
+     * @return
+     */
+    MerchantDTO queryMerchantByTenantId(Long tenantId);
+
+    /**
+     * 商户资质申请
+     * @param merchantId 商户id
+     * @param merchantDTO
+     */
+    void applayMerchant(Long merchantId, MerchantDTO merchantDTO);
 }

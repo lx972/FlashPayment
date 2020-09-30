@@ -28,6 +28,14 @@ spring:
           refresh: true
           data-id: spring-boot-http.yaml # spring boot http配置
           group: COMMON_GROUP # 通用配置组
+        -
+          refresh: true
+          data-id: spring-boot-sms.yaml # spring boot sms配置
+          group: COMMON_GROUP # 通用配置组
+        -
+          refresh: true
+          data-id: qiniu.yaml # 七牛配置
+          group: COMMON_GROUP # 通用配置组
   #SpringMVC上传文件配置
   servlet:
     multipart:
@@ -62,3 +70,5 @@ dubbo:
 
 logging:
   config: classpath:log4j2.xml
+
+
