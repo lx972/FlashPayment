@@ -39,7 +39,7 @@ public class MerchantServiceImpl implements IMerchantService {
      * @return
      */
     @Override
-    public MerchantDTO queryMerchantById(String id) {
+    public MerchantDTO queryMerchantById(String id) throws BusinessException {
         Merchant merchant = merchantMapper.selectById(id);
         MerchantDTO merchantDTO = MerchantCovert.instance.entity2dto(merchant);
         return merchantDTO;
@@ -51,7 +51,7 @@ public class MerchantServiceImpl implements IMerchantService {
      * @param merchantDTO
      */
     @Override
-    public void registerMerchant(MerchantDTO merchantDTO) {
+    public void registerMerchant(MerchantDTO merchantDTO) throws BusinessException {
 
         //手机号唯一性校验
         Integer count = merchantMapper.selectCount(new LambdaQueryWrapper<Merchant>().eq(Merchant::getMobile, merchantDTO.getMobile()));
@@ -71,10 +71,10 @@ public class MerchantServiceImpl implements IMerchantService {
      * @return
      */
     @Override
-    public MerchantDTO queryMerchantByTenantId(Long tenantId) {
+    public MerchantDTO queryMerchantByTenantId(Long tenantId) throws BusinessException {
         //租户id非空校验
         if (tenantId == null) {
-            throw new BusinessException(CommonErrorCode.E_200018);
+            throw new BusinessException(CommonErrorCode.E_999910);
         }
         Merchant merchant = merchantMapper.selectOne(new LambdaQueryWrapper<Merchant>().eq(Merchant::getTenantId, tenantId));
         if (null == merchant) {
@@ -91,12 +91,9 @@ public class MerchantServiceImpl implements IMerchantService {
      * @param merchantDTO
      */
     @Override
-    public void applayMerchant(Long merchantId, MerchantDTO merchantDTO) {
-        if (merchantId == null || merchantDTO == null) {
-            throw new BusinessException(CommonErrorCode.E_100108);
-        }
+    public void applayMerchant(Long merchantId, MerchantDTO merchantDTO) throws BusinessException {
         Merchant merchant = merchantMapper.selectById(merchantId);
-        if (merchant==null){
+        if (merchant == null) {
             throw new BusinessException(CommonErrorCode.E_200002);
         }
         Merchant merchantUpdate = MerchantCovert.instance.dto2entity(merchantDTO);

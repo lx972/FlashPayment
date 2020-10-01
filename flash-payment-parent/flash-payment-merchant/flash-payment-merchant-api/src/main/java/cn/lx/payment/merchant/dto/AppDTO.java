@@ -7,20 +7,20 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@ApiModel(value = "AppDTO", description = "商店信息")
+@ApiModel(value = "AppDTO", description = "应用信息")
 public class AppDTO implements Serializable {
 
 
     @ApiModelProperty(value = "主键id",dataType = "Long")
     private Long id;
 
-    @ApiModelProperty(value = "商店id",dataType = "String")
+    @ApiModelProperty(value = "应用id",dataType = "String")
     private String appId;
 
     /**
-     * 商店名称
+     * 应用名称
      */
-    @ApiModelProperty(value = "商店名称",dataType = "String")
+    @ApiModelProperty(value = "应用名称",dataType = "String")
     private String appName;
 
     /**

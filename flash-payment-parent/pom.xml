@@ -12,6 +12,7 @@
         <module>flash-payment-common</module>
         <module>flash-payment-merchant-application</module>
         <module>flash-payment-merchant</module>
+        <module>flash-payment-transaction</module>
     </modules>
 
     <parent>

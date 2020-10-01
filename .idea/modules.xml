@@ -9,6 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-service/flash-payment-merchant-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-service/flash-payment-merchant-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-parent.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-api/flash-payment-transaction-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-api/flash-payment-transaction-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-service/flash-payment-transaction-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-service/flash-payment-transaction-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/sailing/sailing.iml" filepath="$PROJECT_DIR$/sailing/sailing.iml" />
     </modules>
   </component>

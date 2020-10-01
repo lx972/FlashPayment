@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lx.payment.transaction.mapper.PayChannelMapper">
+
+    <resultMap id="baseResultMap" type="PayChannel">
+        <id column="ID" property="id"></id>
+        <result column="CHANNEL_NAME" property="channelName"></result>
+        <result column="CHANNEL_CODE" property="channelCode"></result>
+    </resultMap>
+
+    <select id="queryPayChannelByPlatformChannel" resultMap="baseResultMap" parameterType="java.lang.String">
+        SELECT pc.*
+        FROM pay_channel pc,platform_channel plc,platform_pay_channel ppc
+        WHERE pc.CHANNEL_CODE=ppc.PAY_CHANNEL
+        AND plc.CHANNEL_CODE=ppc.PLATFORM_CHANNEL
+        AND plc.CHANNEL_CODE=#{platformChannelCode};
+    </select>
+</mapper>

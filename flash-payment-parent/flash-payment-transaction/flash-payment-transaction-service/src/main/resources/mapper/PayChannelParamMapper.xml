@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lx.payment.transaction.mapper.PayChannelParamMapper">
+
+
+    <resultMap id="baseResultMap" type="PayChannelParam">
+        <id column="ID" property="id"></id>
+        <result column="CHANNEL_NAME" property="channelName"></result>
+        <result column="MERCHANT_ID" property="merchantId"></result>
+        <result column="PAY_CHANNEL" property="payChannel"></result>
+        <result column="PARAM" property="param"></result>
+        <result column="APP_PLATFORM_CHANNEL_ID" property="appPlatformChannelId"></result>
+    </resultMap>
+    <!--获取指定应用指定服务类型下所包含的原始支付渠道参数列表-->
+    <select id="queryPayChannelParams" resultMap="baseResultMap">
+        SELECT pcp.*
+        FROM pay_channel_param pcp,app_platform_channel apc
+        WHERE pcp.APP_PLATFORM_CHANNEL_ID=apc.ID
+        AND apc.APP_ID=#{appId}
+        AND apc.PLATFORM_CHANNEL=#{platformChannel};
+    </select>
+    <!--获取指定应用指定服务类型下指定原始支付方式所包含的原始支付渠道参数-->
+    <select id="queryPayChannelParam" resultMap="baseResultMap">
+        SELECT pcp.*
+        FROM pay_channel_param pcp,app_platform_channel apc
+        WHERE pcp.APP_PLATFORM_CHANNEL_ID=apc.ID
+        AND apc.APP_ID=#{appId}
+        AND apc.PLATFORM_CHANNEL=#{platformChannel}
+        AND pcp.PAY_CHANNEL=#{payChannel};
+    </select>
+</mapper>

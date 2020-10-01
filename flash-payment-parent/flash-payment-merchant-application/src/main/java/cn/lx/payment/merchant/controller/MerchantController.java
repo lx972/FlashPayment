@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Slf4j
 @RestController
-@Api(value = "商户平台-商户相关", tags = "商户平台-商户相关", description = "商户平台-商户相关")
+@Api(description = "商户平台-商户相关")
 public class MerchantController {
 
     @Reference
@@ -108,9 +108,11 @@ public class MerchantController {
     @ApiImplicitParam(name = "merchantApplayVO",value = "资质申请的参数",dataType = "MerchantApplayVO",paramType = "body")
     @PostMapping("/my/merchants/save")
     public MerchantApplayVO saveMerchant(@RequestBody MerchantApplayVO merchantApplayVO){
-
         //解析token得到商户id
         Long merchantId = SecurityUtil.getMerchantId();
+        if (merchantId == null || merchantApplayVO == null) {
+            throw new BusinessException(CommonErrorCode.E_100108);
+        }
         MerchantDTO merchantDTO = MerchantApplayCovert.INSTANCE.vo2dto(merchantApplayVO);
         //商户资质申请
         iMerchantService.applayMerchant(merchantId,merchantDTO);

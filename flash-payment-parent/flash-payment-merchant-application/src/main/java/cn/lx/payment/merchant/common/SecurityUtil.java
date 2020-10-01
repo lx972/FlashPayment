@@ -1,5 +1,7 @@
 package cn.lx.payment.merchant.common;
 
+import cn.lx.payment.domain.BusinessException;
+import cn.lx.payment.domain.CommonErrorCode;
 import cn.lx.payment.merchant.api.IMerchantService;
 import cn.lx.payment.merchant.dto.MerchantDTO;
 import cn.lx.payment.util.ApplicationContextHelper;
@@ -25,7 +27,7 @@ public class SecurityUtil {
 				.getRequest();
 		String jsonToken = request.getHeader("authorization");
 		if (StringUtils.isEmpty(jsonToken) || !jsonToken.startsWith("Bearer ")) {
-			throw new RuntimeException("token is not as expected");
+			throw new BusinessException(CommonErrorCode.E_999911);
 		}
 		jsonToken = jsonToken.substring(7);
 		jsonToken = EncryptUtil.decodeUTF8StringBase64(jsonToken);
