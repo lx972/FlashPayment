@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FlashPayment.iml" filepath="$PROJECT_DIR$/.idea/FlashPayment.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway-service/flash-payment-gateway-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway-service/flash-payment-gateway-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-api/flash-payment-merchant-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant/flash-payment-merchant-api/flash-payment-merchant-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-merchant-application/flash-payment-merchant-application.iml" />
@@ -12,6 +14,12 @@
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-api/flash-payment-transaction-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-api/flash-payment-transaction-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-service/flash-payment-transaction-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-transaction/flash-payment-transaction-service/flash-payment-transaction-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa-api/flash-payment-uaa-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa-api/flash-payment-uaa-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa-service/flash-payment-uaa-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/flash-payment-uaa-service/flash-payment-uaa-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-api/flash-payment-user-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-api/flash-payment-user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-service/flash-payment-user-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-service/flash-payment-user-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/sailing/sailing.iml" filepath="$PROJECT_DIR$/sailing/sailing.iml" />
     </modules>
   </component>

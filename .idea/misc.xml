@@ -8,6 +8,10 @@
       <list>
         <option value="$PROJECT_DIR$/flash-payment-parent/pom.xml" />
         <option value="$PROJECT_DIR$/sailing/pom.xml" />
+        <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/shanjupay-gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/pom.xml" />
+        <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/pom.xml" />
+        <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/pom.xml" />
       </list>
     </option>
   </component>

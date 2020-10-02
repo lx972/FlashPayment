@@ -13,6 +13,9 @@
         <module>flash-payment-merchant-application</module>
         <module>flash-payment-merchant</module>
         <module>flash-payment-transaction</module>
+        <module>flash-payment-gateway</module>
+        <module>flash-payment-uaa</module>
+        <module>flash-payment-user</module>
     </modules>
 
     <parent>
