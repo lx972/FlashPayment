@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <#import "/spring.ftl" as spring/>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -109,7 +109,7 @@
 <body>
 <div id="app">
 
-	<form action="${rc.contextPath}/login.do" method="post" autocomplete="off" class="form-horizontal">
+	<form action="${rc.contextPath}/login.do" method="post" class="form-horizontal">
 
 	   <div class="logo">
 	     <p>统一认证</p>
@@ -118,17 +118,17 @@
 		   <input type="hidden" name="domain" value="b" />
 		   <input type="hidden" name="authenticationType" value="password" />
 		   <div class="form-input">
-			   <input type="text" autocomplete="off" required="required" v-model="username"  name="username"  />
+			   <input type="text" name="username"  />
 		   </div>
 		   <div class="form-input">
-			   <input  type="password" autocomplete="off" required="required" v-model="password"  name="password"  />
+			   <input  type="password" name="password"  />
 	     </div>
         <#if RequestParameters["authentication_error"]??>
-          <#if RequestParameters["authentication_error"]=='2'>     
+          <#if RequestParameters["authentication_error"]=='2'>
                <span class="label label-danger">拒绝访问 !!!</span>
           </#if>
-          
-          <#if RequestParameters["authentication_error"]=='1'>     
+
+          <#if RequestParameters["authentication_error"]=='1'>
               <span class="label label-danger">用户名或密码错误</span></c:if>
           </#if>
         </#if>
@@ -136,7 +136,7 @@
 	       <input type="submit" id="submit" value="登录">
 	     </div>
 	   </div>
-	   
+
    </form>
 </div>
 </body>

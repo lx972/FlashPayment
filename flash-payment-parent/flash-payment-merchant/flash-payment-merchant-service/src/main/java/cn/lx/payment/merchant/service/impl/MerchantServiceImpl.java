@@ -89,7 +89,7 @@ public class MerchantServiceImpl implements IMerchantService {
         //设置租户类型编码
         createTenantRequest.setTenantTypeCode("shanju-merchant");
         //设置套餐编码
-        createTenantRequest.setName("shanju-merchant");
+        createTenantRequest.setBundleCode("shanju-merchant");
         //设置租户管理员登录手机号
         createTenantRequest.setMobile(merchantDTO.getMobile());
         //设置租户管理员登录用户名
