@@ -90,4 +90,8 @@ public class MerchantDTO implements Serializable {
     private Long tenantId;
 
 
+    @ApiModelProperty("管理员登录密码")
+    private String password;
+
+
 }

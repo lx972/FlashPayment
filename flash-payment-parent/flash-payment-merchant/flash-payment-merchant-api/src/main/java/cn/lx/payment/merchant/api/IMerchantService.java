@@ -25,8 +25,9 @@ public interface IMerchantService {
      * 注册商户
      *
      * @param merchantDTO
+     * @return
      */
-    void registerMerchant(MerchantDTO merchantDTO) throws BusinessException;
+    MerchantDTO registerMerchant(MerchantDTO merchantDTO) throws BusinessException;
 
     /**
      * 根据租户id查询企业所有人信息
@@ -38,9 +39,10 @@ public interface IMerchantService {
 
     /**
      * 商户资质申请
-     *
-     * @param merchantId  商户id
+     *  @param merchantId  商户id
      * @param merchantDTO
+     * @return
      */
-    void applayMerchant(Long merchantId, MerchantDTO merchantDTO) throws BusinessException;
+    MerchantDTO applayMerchant(Long merchantId, MerchantDTO merchantDTO) throws BusinessException;
+
 }

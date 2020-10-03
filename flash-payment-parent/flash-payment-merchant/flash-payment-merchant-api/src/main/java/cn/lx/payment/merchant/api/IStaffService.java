@@ -1,5 +1,7 @@
 package cn.lx.payment.merchant.api;
 
+import cn.lx.payment.domain.BusinessException;
+import cn.lx.payment.merchant.dto.StaffDTO;
 
 /**
  * <p>
@@ -10,5 +12,14 @@ package cn.lx.payment.merchant.api;
  * @since 2020-09-22
  */
 public interface IStaffService {
+
+
+    /**
+     * 商户新增员工
+     * @param staffDTO
+     * @return
+     * @throws BusinessException
+     */
+    StaffDTO createStaff(StaffDTO staffDTO)throws BusinessException;
 
 }

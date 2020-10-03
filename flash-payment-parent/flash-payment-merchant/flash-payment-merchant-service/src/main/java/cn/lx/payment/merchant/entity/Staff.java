@@ -66,7 +66,7 @@ public class Staff implements Serializable {
      * 0表示禁用，1表示启用
      */
     @TableField("STAFF_STATUS")
-    private Boolean staffStatus;
+    private Integer staffStatus;
 
 
 }

@@ -66,48 +66,49 @@ public class MerchantController {
     @ApiOperation(value = "注册商户")
     @ApiImplicitParam(name = "merchantRegisterVO", value = "商户注册信息", required = true, dataType = "MerchantRegisterVO", paramType = "body")
     @PostMapping("/merchants/register")
-    public MerchantRegisterVO registerMerchant(@RequestBody MerchantRegisterVO merchantRegisterVO) {
+    public MerchantDTO registerMerchant(@RequestBody MerchantRegisterVO merchantRegisterVO) {
         log.info("开始注册");
         //验证是否传入参数
-        if (null==merchantRegisterVO){
+        if (null == merchantRegisterVO) {
             throw new BusinessException(CommonErrorCode.E_100108);
         }
         //验证是否传入手机号
-        if (Strings.isNullOrEmpty(merchantRegisterVO.getMobile())){
+        if (Strings.isNullOrEmpty(merchantRegisterVO.getMobile())) {
             throw new BusinessException(CommonErrorCode.E_100112);
         }
         //手机号合法性校验
-        if (!PhoneUtil.isMatches(merchantRegisterVO.getMobile())){
+        if (!PhoneUtil.isMatches(merchantRegisterVO.getMobile())) {
             throw new BusinessException(CommonErrorCode.E_100109);
         }
         //验证是否传入用户名
-        if (Strings.isNullOrEmpty(merchantRegisterVO.getUsername())){
+        if (Strings.isNullOrEmpty(merchantRegisterVO.getUsername())) {
             throw new BusinessException(CommonErrorCode.E_100110);
         }
         //验证是否传入密码
-        if (Strings.isNullOrEmpty(merchantRegisterVO.getPassword())){
+        if (Strings.isNullOrEmpty(merchantRegisterVO.getPassword())) {
             throw new BusinessException(CommonErrorCode.E_100111);
         }
         //校验验证码
         iSmsService.checkCode(merchantRegisterVO.getVerifiyCode(), merchantRegisterVO.getVerifiykey());
 
         MerchantDTO merchantDTO = MerchantRegisterCovert.instance.vo2dto(merchantRegisterVO);
-        iMerchantService.registerMerchant(merchantDTO);
-        return merchantRegisterVO;
+        merchantDTO = iMerchantService.registerMerchant(merchantDTO);
+        return merchantDTO;
     }
 
 
     @ApiOperation(value = "证件照上传")
     @PostMapping("/upload")
-    public String upload(@ApiParam(value = "上传的文件", required = true)@RequestParam(value = "file") MultipartFile file){
+    public String upload(@ApiParam(value = "上传的文件", required = true) @RequestParam(value = "file") MultipartFile file) {
         String filename = iFileService.upload(file);
         return filename;
     }
 
+
     @ApiOperation(value = "商户资质申请")
-    @ApiImplicitParam(name = "merchantApplayVO",value = "资质申请的参数",dataType = "MerchantApplayVO",paramType = "body")
+    @ApiImplicitParam(name = "merchantApplayVO", value = "资质申请的参数", dataType = "MerchantApplayVO", paramType = "body")
     @PostMapping("/my/merchants/save")
-    public MerchantApplayVO saveMerchant(@RequestBody MerchantApplayVO merchantApplayVO){
+    public MerchantDTO saveMerchant(@RequestBody MerchantApplayVO merchantApplayVO) {
         //解析token得到商户id
         Long merchantId = SecurityUtil.getMerchantId();
         if (merchantId == null || merchantApplayVO == null) {
@@ -115,7 +116,7 @@ public class MerchantController {
         }
         MerchantDTO merchantDTO = MerchantApplayCovert.INSTANCE.vo2dto(merchantApplayVO);
         //商户资质申请
-        iMerchantService.applayMerchant(merchantId,merchantDTO);
-        return merchantApplayVO;
+        merchantDTO = iMerchantService.applayMerchant(merchantId, merchantDTO);
+        return merchantDTO;
     }
 }

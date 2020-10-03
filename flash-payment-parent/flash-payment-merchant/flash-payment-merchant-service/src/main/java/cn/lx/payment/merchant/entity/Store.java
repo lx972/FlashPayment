@@ -44,7 +44,7 @@ public class Store implements Serializable {
      * 0表示禁用，1表示启用
      */
     @TableField("STORE_STATUS")
-    private Boolean storeStatus;
+    private Integer storeStatus;
 
     /**
      * 门店地址

@@ -1,6 +1,5 @@
 package cn.lx.payment.merchant.entity;
 
-import cn.lx.payment.merchant.dto.MerchantDTO;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -10,7 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @Data
 @TableName("merchant")
-public class Merchant extends MerchantDTO implements Serializable {
+public class Merchant implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

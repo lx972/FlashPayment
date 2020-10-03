@@ -40,8 +40,8 @@ public class StoreDTO implements Serializable {
     /**
      * 0表示禁用，1表示启用
      */
-    @ApiModelProperty(value = "是否启用",dataType = "Boolean")
-    private Boolean storeStatus;
+    @ApiModelProperty(value = "是否启用",dataType = "Integer")
+    private Integer storeStatus;
 
     /**
      * 门店地址

@@ -36,7 +36,7 @@ public class StaffDTO implements Serializable {
     private LocalDateTime lastLoginTime;
 
     @ApiModelProperty(value = "0表示禁用，1表示启用")
-    private Boolean staffStatus;
+    private Integer staffStatus;
 
 
 }
