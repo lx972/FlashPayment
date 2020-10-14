@@ -22,18 +22,18 @@ import java.util.Map;
 public class SecurityUtil {
 
 	//测试使用
-	public static Long getMerchantId() {
-		HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes()))
-				.getRequest();
-		String jsonToken = request.getHeader("authorization");
-		if (StringUtils.isEmpty(jsonToken) || !jsonToken.startsWith("Bearer ")) {
-			throw new BusinessException(CommonErrorCode.E_999911);
-		}
-		jsonToken = jsonToken.substring(7);
-		jsonToken = EncryptUtil.decodeUTF8StringBase64(jsonToken);
-		JSONObject jsonObject = JSON.parseObject(jsonToken);
-		return jsonObject.getLong("merchantId");
-	}
+//	public static Long getMerchantId() {
+//		HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes()))
+//				.getRequest();
+//		String jsonToken = request.getHeader("authorization");
+//		if (StringUtils.isEmpty(jsonToken) || !jsonToken.startsWith("Bearer ")) {
+//			throw new BusinessException(CommonErrorCode.E_999911);
+//		}
+//		jsonToken = jsonToken.substring(7);
+//		jsonToken = EncryptUtil.decodeUTF8StringBase64(jsonToken);
+//		JSONObject jsonObject = JSON.parseObject(jsonToken);
+//		return jsonObject.getLong("merchantId");
+//	}
 
 	public static LoginUser getUser() {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
@@ -50,15 +50,15 @@ public class SecurityUtil {
 		return new LoginUser();
 	}
 
-//	public static Long getMerchantId(){
-//		IMerchantService iMerchantService = ApplicationContextHelper.getBean(IMerchantService.class);
-//		MerchantDTO merchantDTO = iMerchantService.queryMerchantByTenantId(getUser().getTenantId());
-//		Long merchantId = null;
-//		if(merchantDTO!=null){
-//			merchantId = merchantDTO.getId();
-//		}
-//		return merchantId;
-//	}
+	public static Long getMerchantId(){
+		IMerchantService iMerchantService = ApplicationContextHelper.getBean(IMerchantService.class);
+		MerchantDTO merchantDTO = iMerchantService.queryMerchantByTenantId(getUser().getTenantId());
+		Long merchantId = null;
+		if(merchantDTO!=null){
+			merchantId = merchantDTO.getId();
+		}
+		return merchantId;
+	}
 
 	/**
 	 * 转换明文jsonToken为用户对象

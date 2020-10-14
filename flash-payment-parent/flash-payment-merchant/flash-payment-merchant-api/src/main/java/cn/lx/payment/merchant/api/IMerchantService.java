@@ -19,7 +19,7 @@ public interface IMerchantService {
      * @param id
      * @return
      */
-    MerchantDTO queryMerchantById(String id) throws BusinessException;
+    MerchantDTO queryMerchantById(Long id) throws BusinessException;
 
     /**
      * 注册商户

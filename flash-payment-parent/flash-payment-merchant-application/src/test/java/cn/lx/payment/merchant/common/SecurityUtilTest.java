@@ -30,7 +30,7 @@ public class SecurityUtilTest {
     @Test
     public void createToken() throws JSONException {
 
-        String merchantId="1308713732683186177";
+        Long merchantId=1308713732683186177l;
         MerchantDTO merchantDTO = iMerchantService.queryMerchantById(merchantId);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("mobile",merchantDTO.getMobile());
@@ -39,6 +39,14 @@ public class SecurityUtilTest {
         String base64 = EncryptUtil.encodeUTF8StringBase64(jsonObject.toString());
         String token="Bearer "+base64;
         System.out.println(token);
+    }
+
+    @Test
+    public void queryMerchantByTenantId() throws JSONException {
+
+
+        MerchantDTO merchantDTO = iMerchantService.queryMerchantByTenantId(12l);
+        System.out.println(merchantDTO);
     }
 
 }

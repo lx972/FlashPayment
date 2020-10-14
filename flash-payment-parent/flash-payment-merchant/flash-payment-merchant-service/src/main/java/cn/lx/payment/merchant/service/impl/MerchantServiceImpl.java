@@ -61,7 +61,7 @@ public class MerchantServiceImpl implements IMerchantService {
      * @return
      */
     @Override
-    public MerchantDTO queryMerchantById(String id) throws BusinessException {
+    public MerchantDTO queryMerchantById(Long id) throws BusinessException {
         Merchant merchant = merchantMapper.selectById(id);
         MerchantDTO merchantDTO = MerchantCovert.instance.entity2dto(merchant);
         return merchantDTO;

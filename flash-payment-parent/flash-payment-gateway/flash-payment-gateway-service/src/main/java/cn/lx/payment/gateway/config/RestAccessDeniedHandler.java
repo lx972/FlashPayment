@@ -13,6 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RestAccessDeniedHandler  implements AccessDeniedHandler {
+
+    /**
+     * 自定义403响应内容
+     * @param request
+     * @param response
+     * @param ex
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException ex) throws IOException, ServletException {
         RestResponse restResponse = new RestResponse(HttpStatus.FORBIDDEN.value(),"没有权限");

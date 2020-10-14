@@ -45,10 +45,10 @@ public class MerchantController {
     @Autowired
     private IFileService iFileService;
 
-    @ApiOperation(value = "根据id查询企业所有人信息")
+    @ApiOperation(value = "根据id查询商户信息")
     @ApiImplicitParam(value = "主键id", name = "id", required = true, paramType = "path", dataType = "String")
     @GetMapping(value = "/merchant/{id}")
-    public MerchantDTO queryMerchantById(@PathVariable("id") String id) {
+    public MerchantDTO queryMerchantById(@PathVariable("id") Long id) {
         MerchantDTO merchantDTO = iMerchantService.queryMerchantById(id);
         return merchantDTO;
     }
@@ -117,6 +117,14 @@ public class MerchantController {
         MerchantDTO merchantDTO = MerchantApplayCovert.INSTANCE.vo2dto(merchantApplayVO);
         //商户资质申请
         merchantDTO = iMerchantService.applayMerchant(merchantId, merchantDTO);
+        return merchantDTO;
+    }
+
+    @ApiOperation(value = "查询登录用户的商户信息")
+    @GetMapping("/my/merchants")
+    public MerchantDTO queryMerchantInfo() {
+        Long merchantId = SecurityUtil.getMerchantId();
+        MerchantDTO merchantDTO = iMerchantService.queryMerchantById(merchantId);
         return merchantDTO;
     }
 }
