@@ -2,9 +2,10 @@ package cn.lx.payment.transaction.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -153,25 +154,25 @@ public class PayOrder implements Serializable {
      * 创建时间
      */
     @TableField("CREATE_TIME")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField("UPDATE_TIME")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 订单过期时间
      */
     @TableField("EXPIRE_TIME")
-    private LocalDateTime expireTime;
+    private Date expireTime;
 
     /**
      * 支付成功时间
      */
     @TableField("PAY_SUCCESS_TIME")
-    private LocalDateTime paySuccessTime;
+    private Date paySuccessTime;
 
 
 }

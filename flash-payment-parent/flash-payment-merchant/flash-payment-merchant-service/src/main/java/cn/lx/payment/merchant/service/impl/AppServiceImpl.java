@@ -92,4 +92,20 @@ public class AppServiceImpl implements IAppService {
         AppDTO appDTO = AppCovert.instance.entity2dto(app);
         return appDTO;
     }
+
+    /**
+     * 校验应用是否属于当前商户
+     *
+     * @param merchantId
+     * @param appId
+     * @return
+     */
+    @Override
+    public Boolean queryAppInMerchant(Long merchantId, String appId) {
+        Integer count = appMapper.selectCount(new LambdaQueryWrapper<App>().eq(App::getMerchantId, merchantId).eq(App::getAppId, appId));
+        if (count>0){
+            return true;
+        }
+        return false;
+    }
 }

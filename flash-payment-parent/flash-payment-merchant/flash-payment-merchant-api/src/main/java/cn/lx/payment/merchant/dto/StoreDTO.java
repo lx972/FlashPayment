@@ -1,5 +1,7 @@
 package cn.lx.payment.merchant.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,7 +12,11 @@ import java.io.Serializable;
 @ApiModel(value = "StoreDTO", description = "门店信息")
 public class StoreDTO implements Serializable {
 
+    /**
+     * JsonSerialize 在接收前端传过来的id时不会转化为long，而是string
+     */
     @ApiModelProperty(value = "主键id",dataType = "Long")
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     /**

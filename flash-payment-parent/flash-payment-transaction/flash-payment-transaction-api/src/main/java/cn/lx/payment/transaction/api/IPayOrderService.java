@@ -1,5 +1,7 @@
 package cn.lx.payment.transaction.api;
 
+import cn.lx.payment.domain.BusinessException;
+
 /**
  * <p>
  *  服务类
@@ -10,4 +12,12 @@ package cn.lx.payment.transaction.api;
  */
 public interface IPayOrderService {
 
+    /**
+     * 生成闪聚服务的订单和二维码
+     * @param merchantId
+     * @param appId
+     * @param storeId
+     * @return
+     */
+    String createCScanBStoreQRCode(Long merchantId, String appId, Long storeId) throws BusinessException;
 }

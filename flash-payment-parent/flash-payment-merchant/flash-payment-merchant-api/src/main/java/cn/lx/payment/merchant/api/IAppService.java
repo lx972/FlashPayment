@@ -40,4 +40,13 @@ public interface IAppService {
      * @return
      */
     AppDTO queryApp(String appId) throws BusinessException;
+
+
+    /**
+     * 校验应用是否属于当前商户
+     * @param merchantId
+     * @param appId
+     * @return
+     */
+    Boolean queryAppInMerchant(Long merchantId, String appId);
 }
