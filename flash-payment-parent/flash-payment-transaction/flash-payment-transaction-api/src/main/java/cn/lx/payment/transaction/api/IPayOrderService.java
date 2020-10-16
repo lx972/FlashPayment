@@ -1,6 +1,8 @@
 package cn.lx.payment.transaction.api;
 
 import cn.lx.payment.domain.BusinessException;
+import cn.lx.payment.domain.PaymentResponseDTO;
+import cn.lx.payment.transaction.dto.PayOrderDTO;
 
 /**
  * <p>
@@ -20,4 +22,11 @@ public interface IPayOrderService {
      * @return
      */
     String createCScanBStoreQRCode(Long merchantId, String appId, Long storeId) throws BusinessException;
+
+    /**
+     * 保存订单,调用支付代理服务，进行支付
+     * @param payOrderDTO
+     * @return
+     */
+    PaymentResponseDTO<String> submitOrderByAli(PayOrderDTO payOrderDTO)throws BusinessException;
 }

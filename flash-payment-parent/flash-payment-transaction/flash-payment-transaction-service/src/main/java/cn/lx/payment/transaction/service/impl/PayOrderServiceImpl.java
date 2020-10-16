@@ -1,13 +1,22 @@
 package cn.lx.payment.transaction.service.impl;
 
+import cn.lx.payment.agent.api.IPayChannelAgentService;
+import cn.lx.payment.agent.dto.AliConfigParam;
+import cn.lx.payment.agent.dto.AlipayBean;
 import cn.lx.payment.domain.BusinessException;
 import cn.lx.payment.domain.CommonErrorCode;
+import cn.lx.payment.domain.PaymentResponseDTO;
 import cn.lx.payment.merchant.api.IMerchantService;
 import cn.lx.payment.merchant.dto.MerchantDTO;
+import cn.lx.payment.transaction.api.IPayChannelParamService;
 import cn.lx.payment.transaction.api.IPayOrderService;
+import cn.lx.payment.transaction.covert.PayOrderCovert;
+import cn.lx.payment.transaction.dto.PayChannelParamDTO;
+import cn.lx.payment.transaction.dto.PayOrderDTO;
 import cn.lx.payment.transaction.entity.PayOrder;
 import cn.lx.payment.transaction.mapper.PayOrderMapper;
 import cn.lx.payment.util.EncryptUtil;
+import cn.lx.payment.util.PaymentUtil;
 import cn.lx.payment.util.QRCodeUtil;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +47,12 @@ public class PayOrderServiceImpl implements IPayOrderService {
 
     @Reference
     private IMerchantService iMerchantService;
+
+    @Reference
+    private IPayChannelAgentService iPayChannelAgentService;
+
+    @Autowired
+    private IPayChannelParamService iPayChannelParamService;
 
 
     @Value("${flash.pay.c2b.subject}")
@@ -77,16 +92,6 @@ public class PayOrderServiceImpl implements IPayOrderService {
         //订单描述
         payOrder.setBody(body);
 
-        /*//币种CNY
-        payOrder.setCurrency("￥");
-        //创建时间
-        payOrder.setCreateTime(new Date());
-        //订单过期时间,2小时
-        payOrder.setExpireTime(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 2));
-        //交易状态支付状态,0-订单生成,1-支付中(目前未使用),2-支付成功,3-业务处理完成,4-关闭
-        payOrder.setTradeState("0");
-        //聚合支付的渠道
-        payOrder.setChannel("shanju_c2b");*/
 
         String payOrderString = JSON.toJSONString(payOrder);
         log.info("二维码信息 {}" + payOrderString);
@@ -103,5 +108,61 @@ public class PayOrderServiceImpl implements IPayOrderService {
         } catch (IOException e) {
             throw new BusinessException(CommonErrorCode.E_200007);
         }
+    }
+
+    /**
+     * 保存订单,调用支付代理服务，进行支付
+     *
+     * @param payOrderDTO
+     * @return
+     */
+    @Override
+    public PaymentResponseDTO<String> submitOrderByAli(PayOrderDTO payOrderDTO) throws BusinessException {
+        //币种CNY
+        payOrderDTO.setCurrency("￥");
+        //创建时间
+        payOrderDTO.setCreateTime(new Date());
+        //订单过期时间,30分钟
+        payOrderDTO.setExpireTime(new Date(System.currentTimeMillis() + 1000 * 60 * 30));
+        //交易状态支付状态,0-订单生成,1-支付中(目前未使用),2-支付成功,3-业务处理完成,4-关闭
+        payOrderDTO.setTradeState("0");
+        //聚合支付的渠道
+        payOrderDTO.setChannel("shanju_c2b");
+        //原始支付渠道
+        payOrderDTO.setPayChannel("ALIPAY_WAP");
+
+        PayOrder payOrder = PayOrderCovert.INSTANCE.dto2entity(payOrderDTO);
+        //设置聚合支付订单号
+        payOrder.setTradeNo(PaymentUtil.genUniquePayOrderNo());
+        //保存
+        payOrderMapper.insert(payOrder);
+
+        AlipayBean alipayBean = new AlipayBean();
+        //设置聚合订单号
+        alipayBean.setOutTradeNo(payOrder.getTradeNo());
+        //订单名称
+        alipayBean.setSubject(payOrder.getSubject());
+        //付款金额
+        alipayBean.setTotalAmount(payOrder.getTotalAmount().toString());
+        //产品编号
+        alipayBean.setProductCode("QUICK_WAP_PAY");
+        //商品描述
+        alipayBean.setBody(payOrder.getBody());
+        //超时时间
+        alipayBean.setExpireTime("30m");
+        //门店id
+        alipayBean.setStoreId(payOrder.getStoreId());
+        //根据条件查询支付参数信息
+        PayChannelParamDTO payChannelParamDTO = iPayChannelParamService.queryPayChannelParam(payOrder.getAppId(), payOrder.getChannel(), payOrder.getPayChannel());
+        if (payChannelParamDTO == null) {
+            throw new BusinessException(CommonErrorCode.E_300007);
+        }
+        //支付宝渠道参数
+        AliConfigParam aliConfigParam = JSON.parseObject(payChannelParamDTO.getParam(), AliConfigParam.class);
+
+        aliConfigParam.setCharest("utf-8");
+
+        //去agent服务创建支付宝订单支付
+        return iPayChannelAgentService.createPayOrderByAliWAP(aliConfigParam, alipayBean);
     }
 }

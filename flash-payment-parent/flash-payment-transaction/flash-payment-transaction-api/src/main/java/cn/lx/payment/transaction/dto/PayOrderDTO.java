@@ -2,6 +2,8 @@ package cn.lx.payment.transaction.dto;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -81,16 +83,16 @@ public class PayOrderDTO implements Serializable {
     private String clientIp;
 
     @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @ApiModelProperty(value = "更新时间")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     @ApiModelProperty(value = "订单过期时间")
-    private LocalDateTime expireTime;
+    private Date expireTime;
 
     @ApiModelProperty(value = "支付成功时间")
-    private LocalDateTime paySuccessTime;
+    private Date paySuccessTime;
 
 
 }

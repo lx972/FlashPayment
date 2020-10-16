@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FlashPayment.iml" filepath="$PROJECT_DIR$/.idea/FlashPayment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent-api/flash-payment-agent-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent-api/flash-payment-agent-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent-service/flash-payment-agent-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-agent/flash-payment-agent-service/flash-payment-agent-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-common/flash-payment-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway-service/flash-payment-gateway-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/flash-payment-gateway-service/flash-payment-gateway-service.iml" />

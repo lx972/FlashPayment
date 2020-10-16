@@ -7,21 +7,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="flash-payment-uaa-api" />
-        <module name="flash-payment-merchant-api" />
-        <module name="flash-payment-gateway-service" />
-        <module name="flash-payment-uaa-service" />
-        <module name="flash-payment-common" />
-        <module name="flash-payment-transaction-api" />
-        <module name="sailing" />
-        <module name="flash-payment-user-api" />
-        <module name="flash-payment-user-service" />
-        <module name="flash-payment-merchant-service" />
         <module name="flash-payment-transaction-service" />
+        <module name="flash-payment-gateway-service" />
+        <module name="flash-payment-merchant-service" />
+        <module name="flash-payment-user-service" />
+        <module name="flash-payment-user-api" />
+        <module name="flash-payment-uaa-service" />
+        <module name="flash-payment-agent-api" />
+        <module name="flash-payment-merchant-api" />
+        <module name="flash-payment-uaa-api" />
+        <module name="flash-payment-transaction-api" />
         <module name="flash-payment-merchant-application" />
+        <module name="flash-payment-common" />
+        <module name="flash-payment-agent-service" />
+        <module name="sailing" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="flash-payment-agent" target="1.8" />
+      <module name="flash-payment-agent-api" target="1.8" />
+      <module name="flash-payment-agent-service" target="1.8" />
       <module name="flash-payment-common" target="1.8" />
       <module name="flash-payment-gateway" target="1.8" />
       <module name="flash-payment-gateway-service" target="1.8" />
@@ -44,6 +49,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="flash-payment-agent-api" options="-parameters" />
+      <module name="flash-payment-agent-service" options="-parameters" />
       <module name="flash-payment-common" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_201/jre/lib/jce.jar&quot;" />
       <module name="flash-payment-gateway-service" options="-parameters" />
       <module name="flash-payment-merchant-api" options="-parameters" />

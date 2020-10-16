@@ -16,6 +16,7 @@
         <module>flash-payment-gateway</module>
         <module>flash-payment-uaa</module>
         <module>flash-payment-user</module>
+        <module>flash-payment-agent</module>
     </modules>
 
     <parent>
