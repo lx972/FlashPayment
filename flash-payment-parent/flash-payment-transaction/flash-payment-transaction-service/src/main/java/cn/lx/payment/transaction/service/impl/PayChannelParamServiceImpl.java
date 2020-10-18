@@ -1,5 +1,6 @@
 package cn.lx.payment.transaction.service.impl;
 
+import cn.lx.payment.agent.dto.AliConfigParam;
 import cn.lx.payment.cache.Cache;
 import cn.lx.payment.domain.BusinessException;
 import cn.lx.payment.domain.CommonErrorCode;
@@ -75,7 +76,7 @@ public class PayChannelParamServiceImpl implements IPayChannelParamService {
             channelParam.setChannelName(payChannelParamDTO.getChannelName());
             channelParam.setParam(payChannelParamDTO.getParam());
             payChannelParamMapper.updateById(channelParam);
-        }else {
+        } else {
             //新增支付参数
             //转化
             PayChannelParam payChannelParam = PayChannelParamCovert.INSTANCE.dto2entity(payChannelParamDTO);
@@ -111,7 +112,7 @@ public class PayChannelParamServiceImpl implements IPayChannelParamService {
         //从数据库中查询应用和平台服务下的参数列表
         List<PayChannelParam> payChannelParams = payChannelParamMapper.queryPayChannelParams(appId
                 , platformChannel);
-        if (payChannelParams!=null){
+        if (payChannelParams != null) {
             //加入到缓存中
             List<PayChannelParamDTO> payChannelParamDTOList = PayChannelParamCovert.INSTANCE.entityList2dtoList(payChannelParams);
             cache.set(keyBuilder, JSON.toJSONString(payChannelParamDTOList));
@@ -134,14 +135,14 @@ public class PayChannelParamServiceImpl implements IPayChannelParamService {
         if (cache.exists(keyBuilder)) {
             //存在缓存，获取
             String value = cache.get(keyBuilder);
-            return JSON.parseArray(value,PayChannelParamDTO.class);
+            return JSON.parseArray(value, PayChannelParamDTO.class);
         }
         //不存在缓存
         List<PayChannelParam> payChannelParamList = payChannelParamMapper.queryPayChannelParams(appId, platformChannel);
         List<PayChannelParamDTO> payChannelParamDTOList = PayChannelParamCovert.INSTANCE.entityList2dtoList(payChannelParamList);
-        if (payChannelParamDTOList!=null){
+        if (payChannelParamDTOList != null) {
             //加入到缓存中
-           cache.set(keyBuilder, JSON.toJSONString(payChannelParamDTOList));
+            cache.set(keyBuilder, JSON.toJSONString(payChannelParamDTOList));
         }
         return payChannelParamDTOList;
     }
@@ -159,5 +160,27 @@ public class PayChannelParamServiceImpl implements IPayChannelParamService {
         PayChannelParam payChannelParam = payChannelParamMapper.queryPayChannelParam(appId, platformChannel, payChannel);
         PayChannelParamDTO payChannelParamDTO = PayChannelParamCovert.INSTANCE.entity2dto(payChannelParam);
         return payChannelParamDTO;
+    }
+
+    /**
+     * 根据订单号查询出支付者的阿里支付参数
+     *
+     * @param out_trade_no 支付时传入的商户订单号
+     * @param trade_no     支付时返回的支付宝交易号
+     * @return
+     */
+    @Override
+    public AliConfigParam queryPayChannelParamByNo(String out_trade_no, String trade_no) throws BusinessException {
+
+        //根据条件查询支付参数信息
+        PayChannelParam payChannelParam = payChannelParamMapper.queryPayChannelParamByNo(out_trade_no, trade_no);
+        if (payChannelParam == null) {
+            throw new BusinessException(CommonErrorCode.E_300014);
+        }
+        PayChannelParamDTO payChannelParamDTO = PayChannelParamCovert.INSTANCE.entity2dto(payChannelParam);
+        //支付宝渠道参数
+        AliConfigParam aliConfigParam = JSON.parseObject(payChannelParamDTO.getParam(), AliConfigParam.class);
+        aliConfigParam.setCharest("utf-8");
+        return aliConfigParam;
     }
 }

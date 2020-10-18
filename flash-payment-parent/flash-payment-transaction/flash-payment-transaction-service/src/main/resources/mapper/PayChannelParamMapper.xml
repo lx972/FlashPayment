@@ -28,4 +28,16 @@
         AND apc.PLATFORM_CHANNEL=#{platformChannel}
         AND pcp.PAY_CHANNEL=#{payChannel};
     </select>
+
+    <!--根据订单号查询出支付者的阿里支付参数-->
+    <select id="queryPayChannelParamByNo" resultMap="baseResultMap">
+        SELECT * FROM pay_channel_param WHERE APP_PLATFORM_CHANNEL_ID=(
+        SELECT ID FROM app_platform_channel WHERE APP_ID=(
+        SELECT APP_ID FROM pay_order
+        <where>
+            <if test="out_trade_no!=null">TRADE_NO=#{out_trade_no} AND</if>
+            <if test="trade_no!=null">OUT_TRADE_NO=#{trade_no}</if>
+        </where>
+        ));
+    </select>
 </mapper>

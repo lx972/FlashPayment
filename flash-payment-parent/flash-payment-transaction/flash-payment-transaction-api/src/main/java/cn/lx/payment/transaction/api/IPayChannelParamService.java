@@ -1,5 +1,6 @@
 package cn.lx.payment.transaction.api;
 
+import cn.lx.payment.agent.dto.AliConfigParam;
 import cn.lx.payment.domain.BusinessException;
 import cn.lx.payment.transaction.dto.PayChannelParamDTO;
 
@@ -25,8 +26,9 @@ public interface IPayChannelParamService {
 
     /**
      * 获取指定应用指定服务类型下所包含的原始支付渠道参数列表
-     * @param appId 应用id
-     * @param platformChannel   平台服务类型编码
+     *
+     * @param appId           应用id
+     * @param platformChannel 平台服务类型编码
      * @return
      */
     List<PayChannelParamDTO> queryPayChannelParams(String appId, String platformChannel);
@@ -34,10 +36,20 @@ public interface IPayChannelParamService {
 
     /**
      * 获取指定应用指定服务类型下指定原始支付方式所包含的原始支付渠道参数
-     * @param appId 应用id
-     * @param platformChannel   平台服务类型编码
-     * @param payChannel    原始支付渠道编码
+     *
+     * @param appId           应用id
+     * @param platformChannel 平台服务类型编码
+     * @param payChannel      原始支付渠道编码
      * @return
      */
     PayChannelParamDTO queryPayChannelParam(String appId, String platformChannel, String payChannel);
+
+    /**
+     * 根据订单号查询出支付者的阿里支付参数
+     *
+     * @param out_trade_no 支付时传入的商户订单号
+     * @param trade_no     支付时返回的支付宝交易号
+     * @return
+     */
+    AliConfigParam queryPayChannelParamByNo(String out_trade_no, String trade_no) throws BusinessException;
 }

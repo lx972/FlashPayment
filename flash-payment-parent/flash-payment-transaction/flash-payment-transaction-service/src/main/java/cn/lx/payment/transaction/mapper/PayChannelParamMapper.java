@@ -1,5 +1,6 @@
 package cn.lx.payment.transaction.mapper;
 
+import cn.lx.payment.transaction.dto.PayChannelParamDTO;
 import cn.lx.payment.transaction.entity.PayChannelParam;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -39,4 +40,14 @@ public interface PayChannelParamMapper extends BaseMapper<PayChannelParam> {
     PayChannelParam queryPayChannelParam(@Param("appId") String appId
             , @Param("platformChannel") String platformChannel
             , @Param("payChannel") String payChannel);
+
+
+    /**
+     * 根据订单号查询出支付者的阿里支付参数
+     *
+     * @param out_trade_no 支付时传入的商户订单号
+     * @param trade_no     支付时返回的支付宝交易号
+     * @return
+     */
+    PayChannelParam queryPayChannelParamByNo(@Param("out_trade_no") String out_trade_no, @Param("trade_no") String trade_no);
 }

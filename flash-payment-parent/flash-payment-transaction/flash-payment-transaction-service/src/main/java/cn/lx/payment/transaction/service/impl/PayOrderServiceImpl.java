@@ -19,6 +19,7 @@ import cn.lx.payment.util.EncryptUtil;
 import cn.lx.payment.util.PaymentUtil;
 import cn.lx.payment.util.QRCodeUtil;
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
@@ -27,7 +28,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * <p>
@@ -164,5 +168,34 @@ public class PayOrderServiceImpl implements IPayOrderService {
 
         //去agent服务创建支付宝订单支付
         return iPayChannelAgentService.createPayOrderByAliWAP(aliConfigParam, alipayBean);
+    }
+
+
+    /**
+     * 校验订单号和支付金额
+     *
+     * @param out_trade_no 商户订单号
+     * @param total_amount 支付金额
+     * @param trade_no     支付宝交易号
+     * @param gmt_payment  付款成功时间
+     */
+    @Override
+    public void verifyReturnParam(String out_trade_no, String total_amount, String trade_no, String gmt_payment) throws ParseException, BusinessException {
+        PayOrder payOrder = payOrderMapper.selectOne(new LambdaQueryWrapper<PayOrder>().eq(PayOrder::getTradeNo, out_trade_no)
+                .eq(PayOrder::getTotalAmount, total_amount));
+        if (payOrder == null) {
+            throw new BusinessException(CommonErrorCode.E_300013);
+        }
+        //支付宝交易凭证号
+        payOrder.setOutTradeNo(trade_no);
+        //交易状态支付状态,0-订单生成,1-支付中(目前未使用),2-支付成功,3-业务处理完成,4-关闭
+        payOrder.setTradeState("2");
+        //更新时间
+        payOrder.setUpdateTime(new Date());
+        //支付成功时间
+        payOrder.setPaySuccessTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(gmt_payment));
+
+        //更新数据库
+        payOrderMapper.updateById(payOrder);
     }
 }

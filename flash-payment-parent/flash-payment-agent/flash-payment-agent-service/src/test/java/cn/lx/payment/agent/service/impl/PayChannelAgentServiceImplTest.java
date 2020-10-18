@@ -2,11 +2,14 @@ package cn.lx.payment.agent.service.impl;
 
 import cn.lx.payment.domain.BusinessException;
 import cn.lx.payment.domain.CommonErrorCode;
+import cn.lx.payment.domain.PaymentResponseDTO;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
+import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
+import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.alipay.api.response.AlipayTradeWapPayResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +42,7 @@ public class PayChannelAgentServiceImplTest {
 
         AlipayTradeWapPayModel alipayTradeWapPayModel = new AlipayTradeWapPayModel();
         //封装订单相关参数
-        alipayTradeWapPayModel.setOutTradeNo("234567897764334456786");
+        alipayTradeWapPayModel.setOutTradeNo("234567897764334486");
         //alipayTradeWapPayModel.setSubject(alipayBean.getSubject());
         alipayTradeWapPayModel.setTotalAmount("23");
         alipayTradeWapPayModel.setProductCode("FLASH-PAY");
@@ -62,6 +65,33 @@ public class PayChannelAgentServiceImplTest {
             PaymentResponseDTO<String> paymentResponseDTO = new PaymentResponseDTO<>();
             paymentResponseDTO.setContent(response.getBody());
             System.out.println(paymentResponseDTO);
+        } else {
+            System.out.println("调用失败");
+        }
+
+    }
+
+    @Test
+    public void queryPayOrder() throws AlipayApiException {
+
+        AlipayClient alipayClient = new DefaultAlipayClient(
+                "https://openapi.alipaydev.com/gateway.do",
+                "2016101700706706",
+                "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCHXQPTEYQ4q1M7FWY0rCLSGsmKm51hbbxpFLd+RFrtUlazEc+IZEo6PQcUov7OWU2mQZMZ3HTROUhcRVxQ/TOgbk9a09ZQ2lSzWnJDGnct4yBPkbIh9K+sJr6CZ0gIbyThr2Ak/RIlr7XpG9tTK793/ejutFyzy/0xST8Q4/XrG2o9pbfBajG4FZog0t+0/FYho2t1q6AmSJnwaK4Yn3CZER1PpGDDu6xPU4Zh/5ilL6dUFzzs0xmQnCYMUsjjkd0rlOevzOo3Zy2DMniN+Hf3/FT4KLGs/XtJVVDt1ox73yVm98zozP329YngiXymaZekR4nT9fXlC7eM4Y8N4DOvAgMBAAECggEAHe0hgFN6EPFHqGNVwkVgOWU0s5Et3TFemzi6TI8eLyOqCVLht/y8MF33p8dVYBd8REpxFCGaLftlFQk8nKct98ULhEAbPKrYWQKhClbajGmPZigG4tzuzbePHNNqqHqyA7c7IVJV5cEQDaZb+epNHWEkU0nKyPFLW88ew0QyxTRo4mbfpY+eVrb3G/fBiYXbRem6TcCsbOQ77eTcMPpnOdP0QpwBCZ0lcbMOawpi9LE6RUv0mjRJYi07kUo5zeodenA3GC9RMf9YCCGClvuZVzR4xiOIO6vE0qT9pYa7uOce0dJhUT0bnKXBnZq4sciVVDRkaY5VTvUHdVB0utdScQKBgQDqwVvup7Lw9zVuwteWvlSUx95XbMKFVhX70GTW+qX+1/+duJ46kxqgvm/RwYLCPrNAqyGwQ9FVG9uNg8Vi1KBbQ1eOzbMo6+uiDtUogE8FVZwZWzSw9YKyIvahrWrLoRi5IiAbkN9UzYzuHti3Dy4/N+01lcIJ6RiHnDB2N8zT1wKBgQCTnQPDnZJc27V3slDqaf0iKS5llZ+eNFlnQwmv5Uz+1Wtb9cso+H4mElIUP13vauriHmXw6Ksy29rxtxPNRpVJyDG6wpKVb5ZvkK1634+uaRkC3lbRCxZZTO0NhaPCIhaXFLW2r6U0YHUYb/enI4z9aom0jihZ7juxF2e3+Msj6QKBgB5+aXOxwvO8GOu/UYPaS2BcKgyPKyFo0kg4hLDMND3LTv/s2FjhfOb+dcX4bgTPYjd3Q1QDKzD0Amv6fuxclEvmjnwVSj15j80oQhYVvK4DtdgxWcHW0lhTZFgSD7pNvclmnmcWRXxdiv3vcdUtmqNJn32Da4YgCjirWDwy+V9XAoGAfi11Dj0e4ykbURmnePjoW87/ze275yuwUEhJe4Vx71LW1mCgLIFcs4ZtiskvrnuiE28QjIEV9f9gg8WOs6Vl7w+lEpNHYV1lJjBxWdrHorpLmtwbMc1caTEMYMafWE5zKOmW+nXhrYfWD/GFq+UDm4r58tChRV4SwCnVirisTCECgYEAgpzraHQkr6wodgki6C/8p2WHkR5IRHwDel9dEGXWhlcrQXmNaSoQnZyQmVhnqrMSX9l76j+1RwKx0MN4IqlwxNx9u8LK+kQOlfPHjzTdvDQqPmbiul1uqMErMn1ifbx80WTTTxDd1gpuN2wmfAKHeJ8kR1o/wzypGyPPv1sHDKg=",
+                "json",
+                "utf-8",
+                "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArmOjVNydnij80SJh9JbPCZyuDjOI5u/ZNUkzYiDus3UEypE++G/pvPHdbMMcnhVV8DvSCI5qLiUvSxPvxML/+OA4vnYzDu+HEpML0h6Hs01ubmd4YVdpMoN2CWKl2n2PBC73+G8dRHGIWpj9tznADRMVkhQsJsQaWvQWA9j0Mlfe+3okhXX75M3TODZuANbsjfyOyZGG0vCFPnOPMLa1was9JjkAG9pKNRUzvQpff8cIHrT1uhFv7NmDl+a3XclRjWAhUyn+ogAtI7Sc3VXcXMKiTU0IKjY7+m7l5GurraPM672Iz6gbLbUg6tNHEoG2xMsJfs6Mwo4cbe7UIY56bQIDAQAB",
+                "RSA2");
+
+        AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
+        request.setBizContent("{" +
+                " \"out_trade_no\":\"SJ1317409012386033664\"," +
+                " \"trade_no\":\"2020101722001456430501139296\"" +
+                " }");//设置业务参数
+        AlipayTradeQueryResponse response = alipayClient.execute(request);
+        System.out.print(response.getBody());
+        if(response.isSuccess()){
+            System.out.println("调用成功");
         } else {
             System.out.println("调用失败");
         }
