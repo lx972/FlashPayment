@@ -44,4 +44,13 @@ public interface IPayOrderService {
      * @param gmt_payment  付款成功时间
      */
     void verifyReturnParam(String out_trade_no, String total_amount, String trade_no, String gmt_payment) throws ParseException, BusinessException;
+
+    /**
+     * 修改数据库订单状态
+     *
+     * @param outTradeNo 商户订单号
+     * @param tradeNo    支付宝交易号
+     * @param state      状态
+     */
+    void updateTradeStateByNo(String outTradeNo, String tradeNo, String state);
 }

@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-uaa/pom.xml" />
         <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/pom.xml" />
         <option value="$PROJECT_DIR$/flash-payment-parent/flash-payment-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/test-rocketmq/pom.xml" />
       </list>
     </option>
   </component>

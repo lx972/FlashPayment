@@ -22,6 +22,9 @@
     <file url="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sailing" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test-rocketmq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test-rocketmq/rocketmq-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test-rocketmq/rocketmq-producer" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

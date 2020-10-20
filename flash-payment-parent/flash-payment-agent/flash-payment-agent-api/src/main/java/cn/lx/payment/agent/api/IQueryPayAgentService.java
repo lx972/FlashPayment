@@ -20,5 +20,5 @@ public interface IQueryPayAgentService {
      * @param aliConfigParam 阿里支付的相关配置
      * @return
      */
-    PaymentResponseDTO<Object> queryAliOrder(String out_trade_no, String trade_no, AliConfigParam aliConfigParam) throws BusinessException;
+    PaymentResponseDTO<Object> queryAliOrder(String out_trade_no, String trade_no, AliConfigParam aliConfigParam) ;
 }

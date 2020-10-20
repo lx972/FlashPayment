@@ -1,0 +1,7 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /consumer
+
+rocketmq:
+  nameServer: 192.168.43.33:9876

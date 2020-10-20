@@ -20,6 +20,7 @@ import cn.lx.payment.util.PaymentUtil;
 import cn.lx.payment.util.QRCodeUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
@@ -31,7 +32,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
 /**
  * <p>
@@ -67,6 +67,7 @@ public class PayOrderServiceImpl implements IPayOrderService {
 
     @Value("${flash.pay.c2b.payurl}")
     private String payurl;//支付路径
+
 
     /**
      * 生成闪聚服务的订单和二维码
@@ -141,6 +142,7 @@ public class PayOrderServiceImpl implements IPayOrderService {
         //保存
         payOrderMapper.insert(payOrder);
 
+
         AlipayBean alipayBean = new AlipayBean();
         //设置聚合订单号
         alipayBean.setOutTradeNo(payOrder.getTradeNo());
@@ -163,7 +165,6 @@ public class PayOrderServiceImpl implements IPayOrderService {
         }
         //支付宝渠道参数
         AliConfigParam aliConfigParam = JSON.parseObject(payChannelParamDTO.getParam(), AliConfigParam.class);
-
         aliConfigParam.setCharest("utf-8");
 
         //去agent服务创建支付宝订单支付
@@ -197,5 +198,22 @@ public class PayOrderServiceImpl implements IPayOrderService {
 
         //更新数据库
         payOrderMapper.updateById(payOrder);
+    }
+
+    /**
+     * 修改数据库订单状态
+     *
+     * @param outTradeNo 商户订单号
+     * @param tradeNo    支付宝交易号
+     * @param state      状态
+     */
+    @Override
+    public void updateTradeStateByNo(String outTradeNo, String tradeNo, String state) {
+
+        payOrderMapper.update(null
+                , new LambdaUpdateWrapper<PayOrder>()
+                        .eq(PayOrder::getTradeNo, outTradeNo)
+                        .set(PayOrder::getOutTradeNo, tradeNo)
+                        .set(PayOrder::getTradeState, state));
     }
 }

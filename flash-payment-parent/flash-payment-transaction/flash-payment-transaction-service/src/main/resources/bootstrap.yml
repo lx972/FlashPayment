@@ -49,6 +49,10 @@ spring:
           data-id: spring-boot-freemarker.yaml # spring-boot-freemarker.yaml配置
           group: COMMON_GROUP # 通用配置组
 
+        - refresh: true
+          data-id: spring-boot-rocketmq.yaml # spring-boot-rocketmq.yaml配置
+          group: COMMON_GROUP # 通用配置组
+
   #SpringMVC上传文件配置
   servlet:
     multipart:

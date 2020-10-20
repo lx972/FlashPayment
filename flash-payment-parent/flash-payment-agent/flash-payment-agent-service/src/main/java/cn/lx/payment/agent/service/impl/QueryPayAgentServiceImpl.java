@@ -24,7 +24,7 @@ import org.apache.dubbo.config.annotation.Service;
  */
 @Service
 @Slf4j
-public class IQueryPayAgentServiceImpl implements IQueryPayAgentService {
+public class QueryPayAgentServiceImpl implements IQueryPayAgentService {
 
     /**
      * 根据付宝交易号或商户订单号查询订单信息
@@ -35,7 +35,7 @@ public class IQueryPayAgentServiceImpl implements IQueryPayAgentService {
      * @return
      */
     @Override
-    public PaymentResponseDTO<Object> queryAliOrder(String out_trade_no, String trade_no, AliConfigParam aliConfigParam) throws BusinessException {
+    public PaymentResponseDTO<Object> queryAliOrder(String out_trade_no, String trade_no, AliConfigParam aliConfigParam){
         AlipayClient alipayClient = new DefaultAlipayClient(aliConfigParam.getUrl(),
                 aliConfigParam.getAppId(),
                 aliConfigParam.getRsaPrivateKey(),
@@ -54,7 +54,7 @@ public class IQueryPayAgentServiceImpl implements IQueryPayAgentService {
             response = alipayClient.execute(request);
         } catch (AlipayApiException e) {
             log.error("查询支付宝订单信息失败:{}", e.getErrMsg());
-            throw new BusinessException(CommonErrorCode.E_400003);
+            //throw new BusinessException(CommonErrorCode.E_400003);
         }
         if (AliCodeConstants.SUCCESSCODE.equals(response.getCode())) {
             log.info("查询支付宝订单信息成功:{}", response.getBody());

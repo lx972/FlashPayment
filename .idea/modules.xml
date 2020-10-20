@@ -23,7 +23,10 @@
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-api/flash-payment-user-api.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-api/flash-payment-user-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-service/flash-payment-user-service.iml" filepath="$PROJECT_DIR$/flash-payment-parent/flash-payment-user/flash-payment-user-service/flash-payment-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-rocketmq/rocketmq-consumer/rocketmq-consumer.iml" filepath="$PROJECT_DIR$/test-rocketmq/rocketmq-consumer/rocketmq-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-rocketmq/rocketmq-producer/rocketmq-producer.iml" filepath="$PROJECT_DIR$/test-rocketmq/rocketmq-producer/rocketmq-producer.iml" />
       <module fileurl="file://$PROJECT_DIR$/sailing/sailing.iml" filepath="$PROJECT_DIR$/sailing/sailing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-rocketmq/test-rocketmq.iml" filepath="$PROJECT_DIR$/test-rocketmq/test-rocketmq.iml" />
     </modules>
   </component>
 </project>
