@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "12e5d0b9-1861-44ec-a79e-cfca86091841",
+		"name": "闪聚支付",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "商户平台应用",
+			"item": [
+				{
+					"name": "应用相关",
+					"item": [
+						{
+							"name": "创建应用",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q=",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appName\": \"string\",\r\n  \"notifyUrl\": \"string\",\r\n  \"publicKey\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/apps",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"apps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询当前商户的应用",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"type": "text",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q="
+									}
+								],
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/apps",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"apps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "根据应用id查询应用的详细信息",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"type": "text",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q="
+									}
+								],
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/apps/c6c7c267108d4c1090c57d71a3193d6d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"apps",
+										"c6c7c267108d4c1090c57d71a3193d6d"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "商户相关",
+					"item": [
+						{
+							"name": "根据id查询企业所有人信息",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:57010/merchant/merchant/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"merchant",
+										"0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取验证码",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/sms?phone=17607139545",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"sms"
+									],
+									"query": [
+										{
+											"key": "phone",
+											"value": "17607139545"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "注册商户",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"mobile\": \"17607139545\",\r\n  \"password\": \"12345\",\r\n  \"username\": \"lx\",\r\n  \"verifiyCode\": \"793136\",\r\n  \"verifiykey\": \"sms:f150917340634209ad07f3325c4afa34\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/merchants/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"merchants",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "证件照上传",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Administrator/Desktop/Picture Resource/手机开发系统素材资源/手机背景图片/2.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "商户资质申请",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q=",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"businessLicensesImg\": \"string\",\r\n  \"contactsAddress\": \"string\",\r\n  \"idCardAfterImg\": \"string\",\r\n  \"idCardFrontImg\": \"string\",\r\n  \"merchantAddress\": \"string\",\r\n  \"merchantName\": \"学生餐厅\",\r\n  \"merchantNo\": \"string\",\r\n  \"merchantType\": \"string\",\r\n  \"mobile\": \"string\",\r\n  \"username\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/merchants/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"merchants",
+										"save"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "渠道和支付参数相关",
+					"item": [
+						{
+							"name": "查询平台的支付渠道",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/platform-channels",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"platform-channels"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "根据平台服务类型获取支付渠道列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/pay-channels/platform-channel/shanju_c2b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"pay-channels",
+										"platform-channel",
+										"shanju_c2b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": " 添加支付参数",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q=",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appId\": \"c6c7c267108d4c1090c57d71a3193d6d\",\r\n  \"channelName\": \"支付宝c2b\",\r\n  \"param\": \"fghgjh\",\r\n  \"payChannel\": \"ALIPAY_WAP\",\r\n  \"platformChannelCode\": \"shanju_c2b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/pay-channel-params",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"pay-channel-params"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新支付参数",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer JTdCJTIybWVyY2hhbnRJZCUyMiUzQTEzMDg3MTM3MzI2ODMxODYxNzclMkMlMjJ1c2VyX25hbWUlMjIlM0ElMjJseCUyMiUyQyUyMm1vYmlsZSUyMiUzQSUyMjE3NjA3MTM5NTUlMjIlN0Q=",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appId\": \"c6c7c267108d4c1090c57d71a3193d6d\",\r\n  \"appPlatformChannelId\": 0,\r\n  \"channelName\": \"支付宝c2b\",\r\n  \"id\": 0,\r\n  \"merchantId\": 0,\r\n  \"param\": \"string\",\r\n  \"payChannel\": \"ALIPAY_WAP\",\r\n  \"platformChannelCode\": \"shanju_c2b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:57010/merchant/my/pay-channel-params",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "57010",
+									"path": [
+										"merchant",
+										"my",
+										"pay-channel-params"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "oauth2.0",
+					"item": [
+						{
+							"name": "授权码模式",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:56020/uaa/oauth/authorize?client_id=merchant-platform&response_type=code&scope=app&redirect_uri=http://www.baidu.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "56020",
+									"path": [
+										"uaa",
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "merchant-platform"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "scope",
+											"value": "app"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://www.baidu.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "密码模式",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "client_id",
+											"value": "merchant-platform",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "{\"username\":\"lx\",\"authenticationType\":\"password\"}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:56020/uaa/oauth/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "56020",
+									"path": [
+										"uaa",
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "解析令牌",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTMiOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJ3eCIsInNjb3BlIjpbImFwcCJdLCJtb2JpbGUiOiIxNTk5NTkwMjg1NiIsImV4cCI6MTYzMzMxNDY1NSwiY2xpZW50X2F1dGhvcml0aWVzIjpbIlJPTEVfTUVSQ0hBTlQiLCJST0xFX1VTRVIiXSwianRpIjoiNmExMjQ4NTUtNzNjNC00ZmJmLWFjNzQtODFlYWIxYmFiMjE1IiwiY2xpZW50X2lkIjoibWVyY2hhbnQtcGxhdGZvcm0ifQ.UzJMBhQVJgWUbiAfS4Epi7Zqo56-wEJ7uhWbWe6akLM",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:56020/uaa/oauth/check_token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "56020",
+									"path": [
+										"uaa",
+										"oauth",
+										"check_token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "门店相关",
+					"item": [
+						{
+							"name": "分页查询商户下门店列表(网关）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTIiOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJseCIsInNjb3BlIjpbInJlYWQiXSwibW9iaWxlIjoiMTc2MDcxMzk1NDUiLCJleHAiOjE2MzQxODA1MzksImNsaWVudF9hdXRob3JpdGllcyI6WyJST0xFX01FUkNIQU5UIiwiUk9MRV9VU0VSIl0sImp0aSI6ImI0M2Q2MjdmLTdlMmMtNDhmOC04N2Y1LTgzMDcxNjVlZjY4ZCIsImNsaWVudF9pZCI6Im1lcmNoYW50LXBsYXRmb3JtIn0.HR9d2ABm9OMpc57kdPyvy30Oyn39Fn4zUlVAt0YvP2k",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "12",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:56010/merchant/my/stores/merchants/page?pageNo=1&pageSize=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "56010",
+									"path": [
+										"merchant",
+										"my",
+										"stores",
+										"merchants",
+										"page"
+									],
+									"query": [
+										{
+											"key": "pageNo",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "支付相关",
+					"item": [
+						{
+							"name": "生成对应应用门店的二维码",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTciOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJ3eCIsInNjb3BlIjpbInJlYWQiXSwibW9iaWxlIjoiMTc2MDcxMzk1NDUiLCJleHAiOjE2MzQzNTQzOTgsImNsaWVudF9hdXRob3JpdGllcyI6WyJST0xFX01FUkNIQU5UIiwiUk9MRV9VU0VSIl0sImp0aSI6ImFmODhkNDM4LTE0ZTUtNDk2Yi1iZWZkLTNkZWNmMWU5ODI5OCIsImNsaWVudF9pZCI6Im1lcmNoYW50LXBsYXRmb3JtIn0.TfA3Ebsmcd-8Pt7qaPnLdEsK9-9atZjjIG1Mc5GWOq0",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "17",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:56010/merchant/my/apps/a94f0fd09d5d4dcd980b42dfa667cdd7/stores/1316925310247235585/app-store-qrcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "56010",
+									"path": [
+										"merchant",
+										"my",
+										"apps",
+										"a94f0fd09d5d4dcd980b42dfa667cdd7",
+										"stores",
+										"1316925310247235585",
+										"app-store-qrcode"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "验证码服务",
+			"item": [
+				{
+					"name": "校验验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:56085/sailing/verify?name=sms&verificationCode=799746&verificationKey=sms%3Aa28cf4c4225d41178072f34fc6a8c336",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56085",
+							"path": [
+								"sailing",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "sms"
+								},
+								{
+									"key": "verificationCode",
+									"value": "799746"
+								},
+								{
+									"key": "verificationKey",
+									"value": "sms%3Aa28cf4c4225d41178072f34fc6a8c336"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "控制台生成验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mobile\":\"17607139545\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:56085/sailing/generate?effectiveTime=60&name=sms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56085",
+							"path": [
+								"sailing",
+								"generate"
+							],
+							"query": [
+								{
+									"key": "effectiveTime",
+									"value": "60"
+								},
+								{
+									"key": "name",
+									"value": "sms"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "网关",
+			"item": [
+				{
+					"name": "获取令牌用户的商户信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTIiOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJseCIsInNjb3BlIjpbInJlYWQiXSwibW9iaWxlIjoiMTc2MDcxMzk1NDUiLCJleHAiOjE2MzQxODA1MzksImNsaWVudF9hdXRob3JpdGllcyI6WyJST0xFX01FUkNIQU5UIiwiUk9MRV9VU0VSIl0sImp0aSI6ImI0M2Q2MjdmLTdlMmMtNDhmOC04N2Y1LTgzMDcxNjVlZjY4ZCIsImNsaWVudF9pZCI6Im1lcmNoYW50LXBsYXRmb3JtIn0.HR9d2ABm9OMpc57kdPyvy30Oyn39Fn4zUlVAt0YvP2k",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:56010/merchant/my/merchants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56010",
+							"path": [
+								"merchant",
+								"my",
+								"merchants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据商户id获取商户信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTMiOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJ3eCIsInNjb3BlIjpbImFwcCJdLCJtb2JpbGUiOiIxNTk5NTkwMjg1NiIsImV4cCI6MTYzMzMxNDY1NSwiY2xpZW50X2F1dGhvcml0aWVzIjpbIlJPTEVfTUVSQ0hBTlQiLCJST0xFX1VTRVIiXSwianRpIjoiNmExMjQ4NTUtNzNjNC00ZmJmLWFjNzQtODFlYWIxYmFiMjE1IiwiY2xpZW50X2lkIjoibWVyY2hhbnQtcGxhdGZvcm0ifQ.UzJMBhQVJgWUbiAfS4Epi7Zqo56-wEJ7uhWbWe6akLM"
+							},
+							{
+								"key": "tenantId",
+								"value": "13",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:56010/merchant/merchant/1308713732683186177",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56010",
+							"path": [
+								"merchant",
+								"merchant",
+								"1308713732683186177"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "校验令牌",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTIiOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJseCIsInNjb3BlIjpbInJlYWQiXSwibW9iaWxlIjoiMTc2MDcxMzk1NDUiLCJleHAiOjE2MzQxODA1MzksImNsaWVudF9hdXRob3JpdGllcyI6WyJST0xFX01FUkNIQU5UIiwiUk9MRV9VU0VSIl0sImp0aSI6ImI0M2Q2MjdmLTdlMmMtNDhmOC04N2Y1LTgzMDcxNjVlZjY4ZCIsImNsaWVudF9pZCI6Im1lcmNoYW50LXBsYXRmb3JtIn0.HR9d2ABm9OMpc57kdPyvy30Oyn39Fn4zUlVAt0YvP2k",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:56010/uaa/oauth/check_token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56010",
+							"path": [
+								"uaa",
+								"oauth",
+								"check_token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "交易服务",
+			"item": [
+				{
+					"name": "根据订单号查询支付宝订单支付状态",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2hhbmp1LXJlc291cmNlIl0sInBheWxvYWQiOnsiMTciOnsicmVzb3VyY2VzIjpudWxsLCJ1c2VyX2F1dGhvcml0aWVzIjp7InJfMDAxIjpbInNqX21fY29uc29sZSIsInNqX21fYXBwX2xpc3QiLCJzal9tX3RyYW5zYWN0aW9uX2xpc3QiLCJzal9tX2FjY291bnRfY2hlY2siLCJzal9tX3BheW1lbnQiLCJzal9tX2FjY291bnRfbGlzdCIsInNqX21fZW50ZXJwcmlzZV9hdXRoIiwic2pfbV9zdG9yZV9saXN0Iiwic2pfbV9zdGFmZl9saXN0Iiwic2pfb19tZW1iZXJfbGlzdCIsInNqX29fZW50cmVwcmlzZV9saXN0Iiwic2pfb19hdWRpdCIsInNqX29fc2VydmljZV90eXBlIiwic2pfb19hY2NvdW50X2NoZWNrIiwic2pfb19hZG1pbl9saXN0Iiwic2pfb19yb2xlX2xpc3QiLCJzal9tX2FwcF9jcmVhdGUiLCJzal9tX3BheW1lbnRfc2V0Iiwic2pfbV9zdG9yZV9jcmVhdGUiLCJzal9tX3N0b3JlX3F1ZXJ5Iiwic2pfbV9zdGFmZl9jcmVhdGUiLCJzal9tX3N0YWZmX3F1ZXJ5Iiwic2pfb19tZW1iZXJfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfcXVlcnkiLCJzal9vX2VudGVycHJpc2VfY3JlYXRlIiwic2pfb19zZXJ2aWNlX2NyZWF0ZSIsInNqX29fc2VydmljZV9xdWVyeSIsInNqX29fYWRtaW5fY3JlYXRlIiwic2pfb19hZG1pbl9xdWVyeSIsInNqX29fcm9sZV9jcmVhdGUiLCJzal9vX3JvbGVfcXVlcnkiLCJzal9vX3JvbGVfc2F2ZSIsInNqX21fYXV0aF9hcHBseSIsInNqX21fY29uc29sZV9yZW5ldyIsInNqX21fY29uc29sZV91cGdyYWRlIiwic2pfbV9hcHBfc2F2ZSIsInNqX21fYXBwX21vZGlmeSIsInNqX21fcGF5cGFyYW1fc2F2ZSIsInNqX21fcGF5X3NldCIsInNqX21fcGF5X3NhdmUiLCJzal9tX2MyYl9xcmNvZGUiLCJzal9tX2IyY19vcmRlciIsInNqX21faDVfdmlldyIsInNqX21fYnVuZGxlX2J1eSIsInNqX21fZW50ZXJwcmlzZV9pbmZvX3N1Ym1pdCIsInNqX21fZW50ZXJwcmlzZV9pbmZvX2NhbmNlbCIsInNqX29fZW50ZXJwcmlzZV9hdXRoX3Bhc3MiLCJzal9vX2VudGVycHJpc2VfYXV0aF9yZWplY3Rpb24iLCJzal9tX3N0b3JlX2VkaXQiLCJzal9tX3N0YWZmX2VkaXQiLCJzal9vX2FkbWluX2VkaXQiLCJzal9vX3JvbGVfZWRpdCIsInNqX21fc3RvcmVfc2F2ZSIsInNqX21fc3RvcmVfZGVsIiwic2pfbV9zdGFmZl9zYXZlIl0sInJfMDAyIjpbInNqX21fdHJhbnNhY3Rpb25fbGlzdCIsInNqX21fYWNjb3VudF9jaGVjayJdfX19LCJ1c2VyX25hbWUiOiJ3eCIsInNjb3BlIjpbInJlYWQiXSwibW9iaWxlIjoiMTc2MDcxMzk1NDUiLCJleHAiOjE2MzQzNTQzOTgsImNsaWVudF9hdXRob3JpdGllcyI6WyJST0xFX01FUkNIQU5UIiwiUk9MRV9VU0VSIl0sImp0aSI6ImFmODhkNDM4LTE0ZTUtNDk2Yi1iZWZkLTNkZWNmMWU5ODI5OCIsImNsaWVudF9pZCI6Im1lcmNoYW50LXBsYXRmb3JtIn0.TfA3Ebsmcd-8Pt7qaPnLdEsK9-9atZjjIG1Mc5GWOq0",
+								"disabled": true
+							},
+							{
+								"key": "tenantId",
+								"type": "text",
+								"value": "17",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:56010/transaction/query/ali/order?out_trade_no=SJ13174112695155548168&trade_no=2020101722001456430501139675",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "56010",
+							"path": [
+								"transaction",
+								"query",
+								"ali",
+								"order"
+							],
+							"query": [
+								{
+									"key": "out_trade_no",
+									"value": "SJ13174112695155548168"
+								},
+								{
+									"key": "trade_no",
+									"value": "2020101722001456430501139675"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
